@@ -1,5 +1,5 @@
 #include "infix_to_postfix.h"
-#include "stack.h" //REMINDER: DUMMY, TO CHANGE INTO STACK FILE'S HEADER
+#include "stack.h" //REMINDER: DUMMY, TO CHANGE INTO STACK FILE'S HEADER file name
 #include <ctype.h>
 #include <string.h>
 #include <stdio.h>
@@ -33,14 +33,16 @@ int isOperator(char c) {
 
 //convertion or evaluation 
 void infixToPostfix(char* infix, Queue *postfixQueue) {
-//reminder: double check variables in other files
+//reminder: double check variables in other files stacks and queue
     CharStack operatorStack;
     initCharStack(&operatorStack);
     char token[10];
     int i = 0, j = 0;
     char c;
 
+    //loop for processing infix
     while (infix[i] != '\0') {
+        //if number/digit
         if (isdigit(infix[i])) {
             j = 0;
             while (isdigit(infix[i])) {
@@ -50,6 +52,7 @@ void infixToPostfix(char* infix, Queue *postfixQueue) {
             enqueue(postfixQueue, token);
             i--;
         }
+        // if there is parenthesis
         else if (infix[i] == '(') {
             pushCharStack(&operatorStack, infix[i]);
         }
@@ -62,6 +65,7 @@ void infixToPostfix(char* infix, Queue *postfixQueue) {
             }
             popCharStack(&operatorStack); // Pop the '('
         }
+        //if operator
         else if (isOperator(infix[i])) {
             while (!isEmptyCharStack(&operatorStack) && precedence(peekCharStack(&operatorStack)) >= precedence(infix[i])) {
                 c = popCharStack(&operatorStack);
