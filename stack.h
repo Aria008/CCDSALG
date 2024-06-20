@@ -16,4 +16,17 @@ void pushCharStack(CharStack *stack, char value);
 char popCharStack(CharStack *stack);
 char peekCharStack(CharStack *stack);
 
+typedef struct {
+    int data[MAX];
+    int top;
+} IntStack;
+
+// Function prototypes for IntStack
+void initIntStack(IntStack *stack);
+int isEmptyIntStack(IntStack *stack);
+int isFullIntStack(IntStack *stack);
+void pushIntStack(IntStack *stack, int value);
+int popIntStack(IntStack *stack);
+int peekIntStack(IntStack *stack);
+
 #endif // STACK_H
