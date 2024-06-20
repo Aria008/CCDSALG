@@ -28,7 +28,7 @@ void enqueue(Queue *queue, char *value) {
     if (isEmptyQueue(queue)) {
         queue->front = 0;
     }
-     queue->rear = (queue->rear + 1) % MAX;
+    queue->rear = (queue->rear + 1) % MAX_QUEUE_SIZE;
     queue->items[queue->rear] = (char*) malloc(strlen(value) + 1);
     strcpy(queue->items[queue->rear], value);
     //will have to allocate memory for string enqueued in malloc: 
