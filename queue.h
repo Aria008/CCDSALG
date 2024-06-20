@@ -1,10 +1,11 @@
 #ifndef QUEUE_H
 #define QUEUE_H
 
-#define MAX 100 
+#define MAX_QUEUE_SIZE 100
+#define MAX_TOKEN_LENGTH 10
 
 typedef struct {
-    char items[MAX][10];
+    char items[MAX_QUEUE_SIZE][MAX_TOKEN_LENGTH + 1];
     int front, rear;
 } Queue;
 
